@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.fdmgroup</groupId>
-	<artifactId>Web1</artifactId>
+	<artifactId>Web_login_register</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Web1 Maven Webapp</name>
+	<name>Web_login_register Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 
@@ -84,7 +84,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>Web1</finalName>
+		<finalName>Web_login_register</finalName>
 
 		<plugins>
 			<plugin>
