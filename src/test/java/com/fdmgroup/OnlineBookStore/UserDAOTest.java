@@ -3,6 +3,8 @@ package com.fdmgroup.OnlineBookStore;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+
 import org.junit.Test;
 import org.mockito.InOrder;
 
@@ -12,6 +14,8 @@ import com.fdmgroup.OnlineBookStore.User.UserDao;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+
+import java.util.List;
 
 public class UserDAOTest {
 	
@@ -83,6 +87,32 @@ public class UserDAOTest {
 			verify(mockUser).setFirstName("Warren");
 			verify(mockUser).getFirstName();
 			verify(mockEt).commit();
+			verify(mockEm).close();
+
+			
+			
+		}
+		
+		@Test
+		public void list_user_name() {
+			EntityManagerFactory mockEmf = mock( EntityManagerFactory.class);
+			EntityManager mockEm = mock(EntityManager.class);
+			EntityTransaction mockEt = mock(EntityTransaction.class);
+			User mockUser = mock(User.class);
+			TypedQuery<String> mockString = mock(TypedQuery.class);
+			
+			when(mockEmf.createEntityManager()).thenReturn(mockEm);
+			when(mockEm.getTransaction()).thenReturn(mockEt);
+			when(mockEm.createQuery("SELECT u.username FROM User AS u", String.class)).thenReturn(mockString);
+			
+			UserDao uDao = new UserDao(mockEmf);
+			uDao.listUserName();
+
+
+			
+			verify(mockEmf).createEntityManager();
+			TypedQuery<String> query = mockEm.createQuery("SELECT u.username FROM User AS u", String.class);
+			verify(query).getResultList();
 			verify(mockEm).close();
 
 			

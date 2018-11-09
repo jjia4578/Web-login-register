@@ -43,7 +43,7 @@ public class UserDao {
 		return user;
 	}
 	
-	public List<String> list_user_name() {
+	public List<String> listUserName() {
 		EntityManager em = emf.createEntityManager();
 
 		TypedQuery<String> query = em.createQuery("SELECT u.username FROM User AS u", String.class);

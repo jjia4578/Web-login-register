@@ -35,7 +35,7 @@ public class UserRegisterServlet extends HttpServlet {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa");
 		EntityManager em = emf.createEntityManager();
 		UserDao uDao = new UserDao(emf);
-		List<String> allUserName = uDao.list_user_name();
+		List<String> allUserName = uDao.listUserName();
 
 		RequestDispatcher rd = null;
 		if (password.equals(null) || allUserName.contains(username) || username.equals(null)) {
